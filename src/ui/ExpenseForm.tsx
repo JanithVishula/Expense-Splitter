@@ -91,10 +91,16 @@ export function ExpenseForm({ store, editing, onDone }: Props) {
   const parsedAmount = parseRupees(amount)
   const totalCents = parsedAmount.ok ? parsedAmount.value : null
 
+  // A blank field counts as zero for the running total, so the shortfall is
+  // visible while the user is still filling the form — that is precisely when
+  // the guidance is most useful. Only genuinely unparseable text (e.g. "abc")
+  // suppresses the difference, since no meaningful total exists then.
   let exactSum = 0
   let exactValid = true
   for (const person of participants) {
-    const parsed = parseRupees(exact[person.id] ?? '')
+    const raw = (exact[person.id] ?? '').trim()
+    if (raw === '') continue
+    const parsed = parseRupees(raw)
     if (parsed.ok) exactSum += parsed.value
     else exactValid = false
   }
@@ -103,8 +109,9 @@ export function ExpenseForm({ store, editing, onDone }: Props) {
   let pctValid = true
   for (const person of participants) {
     const raw = (percentage[person.id] ?? '').trim()
+    if (raw === '') continue
     const value = Number(raw)
-    if (raw !== '' && Number.isFinite(value)) pctSum += Math.round(value * 100)
+    if (Number.isFinite(value)) pctSum += Math.round(value * 100)
     else pctValid = false
   }
 

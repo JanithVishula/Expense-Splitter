@@ -6,8 +6,26 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   test: {
-    // The domain layer is pure TypeScript with no DOM dependency.
-    environment: 'node',
-    include: ['src/**/*.test.ts'],
+    // The domain and state layers are pure TypeScript with no DOM dependency,
+    // so they run in fast `node`. Only component tests pay for jsdom.
+    projects: [
+      {
+        extends: true,
+        test: {
+          name: 'domain',
+          environment: 'node',
+          include: ['src/**/*.test.ts'],
+        },
+      },
+      {
+        extends: true,
+        test: {
+          name: 'ui',
+          environment: 'jsdom',
+          include: ['src/**/*.test.tsx'],
+          setupFiles: ['./src/test-setup.ts'],
+        },
+      },
+    ],
   },
 })
