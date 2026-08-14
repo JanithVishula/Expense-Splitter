@@ -1,0 +1,166 @@
+/* Plain functional styling — the assignment explicitly does not require polish. */
+
+body {
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  background: #fff;
+  color: #111;
+}
+
+main {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 4rem;
+}
+
+h1 {
+  margin-bottom: 0.25rem;
+}
+
+section {
+  border-top: 1px solid #ddd;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+}
+
+h2 {
+  font-size: 1.15rem;
+}
+
+h3 {
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+input,
+select {
+  font: inherit;
+  padding: 0.3rem;
+  border: 1px solid #999;
+  border-radius: 3px;
+}
+
+button {
+  font: inherit;
+  padding: 0.3rem 0.7rem;
+  margin-right: 0.35rem;
+  cursor: pointer;
+}
+
+fieldset {
+  margin: 0.75rem 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+legend {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.check {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.check input {
+  margin-right: 0.3rem;
+}
+
+.row-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.row-field span {
+  min-width: 6rem;
+}
+
+ul.people,
+ul.expenses {
+  list-style: none;
+  padding: 0;
+}
+
+ul.people li,
+ul.expenses li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  padding: 0.3rem 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+tr.total td {
+  border-top: 2px solid #333;
+  border-bottom: none;
+  font-weight: 700;
+}
+
+/* Owed vs owes must be distinguishable without relying on colour alone —
+   the +/- sign and the trailing label carry the same information. */
+.owed {
+  color: #0a7d28;
+  font-weight: 600;
+}
+
+.owes {
+  color: #b3261e;
+  font-weight: 600;
+}
+
+.settled {
+  color: #555;
+}
+
+.ok {
+  color: #0a7d28;
+}
+
+.warn {
+  color: #b26a00;
+  font-weight: 600;
+}
+
+.error {
+  color: #b3261e;
+  font-weight: 600;
+}
+
+.muted {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.actions {
+  display: flex;
+  flex-shrink: 0;
+}
+
+ol.settlement li {
+  padding: 0.25rem 0;
+}
