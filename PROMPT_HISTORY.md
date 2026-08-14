@@ -37,7 +37,12 @@ droppable.
 
 ---
 
-## 2. Scaffold the project and build the money primitive
+## 2. 
+Added Plan.md as a reference
+Convert this plan into prompts (building order) each phase as a prompt
+
+
+## 3. Scaffold the project and build the money primitive
 
 > Set up a Vite + React + TypeScript project with Vitest configured. Then build
 > ONLY src/domain/money.ts — no UI, no other domain files yet. Branded
@@ -57,7 +62,7 @@ stability, float-error guards, and `"0.5"` = 50 cents (not 5).
 
 ---
 
-## 3. Build the split engine
+## 4. Build the split engine
 
 > Build src/domain/split.ts. Add one shared helper `distributeRemainder`
 > implementing largest-remainder, deterministic by index/id, summing to exactly
@@ -78,7 +83,7 @@ breaking sort order failed 1.
 
 ---
 
-## 4. Build balances and settle-up (hard gate)
+## 5. Build balances and settle-up (hard gate)
 
 > Build src/domain/balances.ts and src/domain/settle.ts. `computeBalances`
 > crediting the payer and debiting participants, summing to exactly 0 — assert
@@ -103,7 +108,7 @@ trips it.
 
 ---
 
-## 5. Build the state layer
+## 6. Build the state layer
 
 > Build src/state/useStore.ts holding people and expenses with add/edit/delete.
 > Critical design rule: balances derived fresh from the full expense list on
@@ -129,7 +134,7 @@ cache: it immediately broke the delete-restores-balances test.
 
 ---
 
-## 6. Build the UI and walk the scenario through it
+## 7. Build the UI and walk the scenario through it
 
 > Build a single-page UI with four sections in vertical flow order. Add Expense
 > form with amount via parseRupees, payer dropdown, participant checkboxes, and
@@ -151,7 +156,7 @@ didn't pollute the repo.
 
 ---
 
-## 7. Add live split validation and test it
+## 8. Add live split validation and test it
 
 > Add live validation to the expense form for exact and percentage modes.
 > Running total as the user fills in shares; block submission on mismatch and
@@ -173,7 +178,7 @@ component tests pay for jsdom.
 
 ---
 
-## 8. Write the README and this file
+## 9. Write the README and this file
 
 > Write README.md covering what this is and how to run it, tech stack and why,
 > assumptions (integer cents; largest-remainder with deterministic order;
